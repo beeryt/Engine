@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.3)
 project(engine)
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
+
+find_package(SDL2 REQUIRED)
+
 option(BUILD_DOCS "Build documentation" OFF)
 if (BUILD_DOCS)
   # check if doxygen is installed
