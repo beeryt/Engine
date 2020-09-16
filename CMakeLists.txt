@@ -4,6 +4,7 @@ project(engine)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/sdl2)
 
 find_package(SDL2 REQUIRED)
+find_package(glm REQUIRED)
 
 option(BUILD_DOCS "Build documentation" OFF)
 if (BUILD_DOCS)
@@ -22,6 +23,10 @@ if (BUILD_DOCS)
     COMMENT "Generating documentation with Doxygen"
     VERBATIM)
 endif()
+
+add_library(glad libs/glad/glad.c)
+target_include_directories(glad PUBLIC libs/glad/include)
+target_link_libraries(glad ${CMAKE_DL_LIBS})
 
 add_library(engine src/engine/Engine.cpp src/engine/EngineTime.cpp)
 target_include_directories(engine PUBLIC src/engine/include)
