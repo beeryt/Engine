@@ -12,6 +12,7 @@ class Engine {
     Engine(EngineTime time) : time(time) {}
 
     bool loop();
+    virtual void input();
     virtual void network(uint32_t);
     virtual void update();
     virtual void render(double);

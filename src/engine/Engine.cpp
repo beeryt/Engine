@@ -8,6 +8,10 @@ using std::chrono::milliseconds;
 using std::this_thread::sleep_for;
 
 
+/** \brief Abstract input handler called once per loop
+ */
+void Engine::input() {}
+
 /** \brief Abstract network handler called once per loop
  */
 void Engine::network(uint32_t timeout) {
@@ -32,6 +36,9 @@ void Engine::render(double) {}
  *  \returns False if Engine has shutdown, True otherwise
  */
 bool Engine::loop() {
+  // handle local input
+  input();
+
   // handle network until frame available
   network(time.untilNextFrame());
 
